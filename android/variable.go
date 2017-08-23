@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"aosip/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -94,6 +96,9 @@ type variableProperties struct {
 		Pdk struct {
 			Enabled *bool
 		}
+
+		// include aosip variables
+		*android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -162,6 +167,9 @@ type productVariables struct {
 	BtConfigIncludeDir *string `json:",omitempty"`
 
 	Override_rs_driver *string `json:",omitempty"`
+
+	// include aosip variables
+	*android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
